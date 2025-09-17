@@ -1,0 +1,26 @@
+{
+  "name": "@tuiuq/ai-commit",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "CLI tool to generate git commit message using Moonshot AI",
+  "bin": {
+    "ai-commit": "dist/index.js"
+  },
+  "files": [
+    "files"
+  ],
+  "registry": "https://github.com/tuiuq/ai-commit",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {},
+  "keywords": [
+    "git",
+    "commit",
+    "ai",
+    "moonshot"
+  ],
+  "author": "tuiu <13719283454@163.com>",
+  "license": "MIT",
+  "packageManager": "pnpm@10.14.0"
+}
