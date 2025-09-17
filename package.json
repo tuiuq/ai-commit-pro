@@ -13,7 +13,11 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
-  "scripts": {},
+  "scripts": {
+    "dev": "tsup --sourcemap",
+    "watch": "tsup --sourcemap --watch",
+    "build": "tsup --minify"
+  },
   "keywords": [
     "git",
     "commit",
