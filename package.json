@@ -4,7 +4,7 @@
   "type": "module",
   "description": "CLI tool to generate git commit message using Moonshot AI",
   "bin": {
-    "ai-commit": "dist/index.js"
+    "ai-commit": "dist/index.cjs"
   },
   "files": [
     "files"
