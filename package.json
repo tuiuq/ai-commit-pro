@@ -2,6 +2,7 @@
   "name": "@tuiuq/ai-commit-pro",
   "version": "1.0.0",
   "description": "AI-powered git commit message generator using Moonshot API",
+  "type": "module",
   "main": "index.js",
   "scripts": {},
   "keywords": [
