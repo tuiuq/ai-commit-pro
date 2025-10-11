@@ -9,6 +9,11 @@ async function main() {
 		.description("AI-powered git commit message generator using Moonshot API")
 		.version(version, "--V, --version")
 
+
+	if (process.argv.slice(2).length === 0) {
+		program.outputHelp()
+	}
+
 	await program.parseAsync(process.argv)
 }
 
