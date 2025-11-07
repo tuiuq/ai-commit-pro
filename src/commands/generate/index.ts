@@ -43,7 +43,19 @@ generateCommand
       temperature: 0.7,
     })
     
-    console.log(completion.choices[0]?.message.content)
+    const message = completion.choices[0]?.message.content;
+    
+    if (!message) {
+      console.error("Failed to generate commit message.")
+      return
+    }
+    
+    if (commit) {
+      commit(message)
+      console.log("Changes committed successfully!")
+    } else {
+      console.log(message)
+    }
   })
 
 export default generateCommand
