@@ -11,3 +11,7 @@ export function getGitDiffWithFile(file: string): string {
 export function getGitDiff(): string[] {
   return getChangedFiles().map(getGitDiffWithFile)
 }
+
+export function isChanged() {
+  return getGitDiff().length > 0
+}
