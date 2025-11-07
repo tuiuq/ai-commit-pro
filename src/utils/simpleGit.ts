@@ -15,3 +15,16 @@ export function getGitDiff(): string[] {
 export function isChanged() {
   return getGitDiff().length > 0
 }
+
+export function commit(message: string) {
+  const lines = message
+    .split("\n")
+    .filter(line => line.trim() !== "")
+  if (lines.length === 0) {
+    return;
+  }
+  const command = lines
+    .map(line => `-m "${line.replace(/"/g, '\\"')}"`)
+    .join(" ");
+  execSync(`git commit ${command}`, { encoding: "utf-8" })
+}
