@@ -1,4 +1,4 @@
-export class PromptTemplate<P extends Record<string, string | string[] | undefined>> {
+export class PromptTemplate<P extends object = object> {
   private readonly ifBlockRegex = /\{\{#if\s+([a-zA-Z0-9_]+)\s*\}\}([\s\S]*?)\{\{#endif\s*\}\}/g;
   private readonly variableRegex = /\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g;
 
@@ -14,14 +14,14 @@ export class PromptTemplate<P extends Record<string, string | string[] | undefin
       }
     )
     
-    this.prompt =this.prompt.replace(
+    this.prompt = this.prompt.replace(
       this.variableRegex,
       (_, key: keyof P) => {
         const value = this.promptData[key];
         if (Array.isArray(value)) {
           return value.join("\n");
         }
-        return value ?? ""
+        return String(value ?? "")
       }
     )
   }
