@@ -12,7 +12,8 @@ generateCommand
   .alias("g")
   .description("Generate a git commit message using AI")
   .option("-c, --commit", "Directly commit the generated message")
-  .action(async ({ commit = false }) => {
+  .option("-p, --prompt <path>", "Path to a file containing custom prompt instructions")
+  .action(async ({ commit = false, prompt }) => {
     if (!isChanged()) {
       console.error("No changes to commit.")
       return
