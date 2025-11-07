@@ -11,7 +11,8 @@ generateCommand
   .name("generate")
   .alias("g")
   .description("Generate a git commit message using AI")
-  .action(async () => {
+  .option("-c, --commit", "Directly commit the generated message")
+  .action(async ({ commit = false }) => {
     if (!isChanged()) {
       console.error("No changes to commit.")
       return
