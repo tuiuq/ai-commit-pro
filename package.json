@@ -23,6 +23,7 @@
     "@types/chalk": "^2.2.4",
     "@types/node": "^24.10.0",
     "esbuild": "^0.25.12",
+    "esbuild-plugin-copy": "^2.1.1",
     "typescript": "^5.9.3"
   },
   "dependencies": {
