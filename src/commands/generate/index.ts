@@ -2,8 +2,6 @@ import { Command } from "commander"
 import { parseEnv } from "@/utils/env.ts"
 import z from "zod"
 import OpenAI from "openai"
-import { join } from "node:path"
-import { readFile } from "node:fs/promises"
 import { buildPrompts } from "@/utils/buildPrompts.ts"
 import { getChangedFiles, getGitDiff, isChanged } from "@/utils/simpleGit.ts"
 
