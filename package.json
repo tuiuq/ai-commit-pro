@@ -3,6 +3,27 @@
   "version": "1.0.0",
   "description": "AI-powered git commit message generator using Moonshot API",
   "type": "module",
+  "types": "./dist/types/index.d.ts",
+  "main": "./dist/index.cjs",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tuiuq/ai-commit-pro.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tuiuq/ai-commit-pro/issues"
+  },
+  "homepage": "https://github.com/tuiuq/ai-commit-pro#readme",
   "bin": {
     "ai-commit": "./dist/index.cjs",
     "ac": "./dist/index.cjs"
