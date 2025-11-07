@@ -4,6 +4,8 @@ import z from "zod"
 import OpenAI from "openai"
 import { buildPrompts } from "@/utils/buildPrompts.ts"
 import { getChangedFiles, getGitDiff, isChanged } from "@/utils/simpleGit.ts"
+import { resolve } from "node:path"
+import { readFile } from "node:fs/promises"
 
 const generateCommand = new Command()
 
@@ -29,10 +31,22 @@ generateCommand
       apiKey: env.OPENAI_API_KEY,
     })
     
+    let customContext: string | undefined = undefined;
+    if (prompt) {
+      try {
+        const customPromptPath = resolve(prompt)
+        customContext = await readFile(customPromptPath, "utf-8")
+      } catch (error) {
+        console.error(`Error reading custom prompt file: ${prompt}`)
+        process.exit(1)
+      }
+    }
+
     const { systemPrompt, userPrompt } = await buildPrompts({
       diff: getGitDiff().join("\n"),
       files: getChangedFiles(),
-      lang: "en"
+      lang: "en",
+      customContext
     })
     
     const completion = await client.chat.completions.create({
