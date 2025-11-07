@@ -2,13 +2,11 @@
 
 ---
 【必须遵守的格式】
-```md
-<type>[(<scope>)]: <emoji> <subject>
+<type>(<scope>): <emoji> <subject>
 
 [<body>]
 
 [<footer>]
-```
 
 ---
 【格式说明】
