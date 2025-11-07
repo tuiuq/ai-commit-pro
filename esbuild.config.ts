@@ -1,5 +1,6 @@
 import { build, type Plugin } from "esbuild"
 import { resolve } from "node:path"
+import { builtinModules } from "node:module"
 
 const aliasPlugin = {
   name: "alias",
@@ -13,12 +14,15 @@ const aliasPlugin = {
   }
 } as Plugin
   
+const external = [...builtinModules, ...builtinModules.map(moduleName => `node:${moduleName}`)]
+  
 await build({
   entryPoints: ["src/index.ts"],
-  outfile: "dist/index.js",
+  outfile: "dist/index.cjs",
   bundle: true,
+  external,
   platform: "node",
-  format: "esm",
+  format: "cjs",
   banner: {
     js: "#!/usr/bin/env node"
   },

@@ -4,8 +4,8 @@
   "description": "AI-powered git commit message generator using Moonshot API",
   "type": "module",
   "bin": {
-    "ai-commit": "./dist/index.js",
-    "ac": "./dist/index.js"
+    "ai-commit": "./dist/index.cjs",
+    "ac": "./dist/index.cjs"
   },
   "scripts": {},
   "keywords": [
