@@ -18,7 +18,10 @@ const external = [...builtinModules, ...builtinModules.map(moduleName => `node:$
   
 await build({
   entryPoints: ["src/index.ts"],
-  outfile: "dist/index.cjs",
+  outdir: "dist",
+  outExtension: {
+    ".js": ".cjs"
+  },
   bundle: true,
   external,
   platform: "node",
@@ -28,7 +31,6 @@ await build({
   },
   plugins: [aliasPlugin],
   sourcemap: true,
-  minify: true,
   target: "node20"
 })
 
