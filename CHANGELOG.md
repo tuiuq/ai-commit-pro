@@ -1,8 +1,17 @@
+## [1.2.2] - 2025-11-08
+
+### 🚜 Refactor
+
+- *(justfile)* ♻️ 优化发布打 tag 逻辑
 ## [1.2.1] - 2025-11-08
 
 ### 🚜 Refactor
 
 - *(justfile)* ♻️ 修改版本号提取逻辑
+
+### ⚙️ Miscellaneous Tasks
+
+- *(release)* Bump version v1.2.1
 ## [1.2.0] - 2025-11-08
 
 ### 🚀 Features
