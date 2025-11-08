@@ -1,3 +1,17 @@
+## [1.1.1] - 2025-11-08
+
+### 🚜 Refactor
+
+- *(generate)* ♻️ 更新 commit 调用为 sendCommit
+
+### 📚 Documentation
+
+- *(system)* 📚 Update system documentation format
+## [1.1.0] - 2025-11-08
+
+### ⚙️ Miscellaneous Tasks
+
+- Update changelog
 ## [1.1.0] - 2025-11-08
 
 ### 🚀 Features
