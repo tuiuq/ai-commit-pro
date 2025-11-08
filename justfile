@@ -25,8 +25,6 @@ commit msg:
 
 update-changelog:
 	git cliff --bump -o;
-	git add CHANGELOG.md
-	just commit "chore: update changelog"
 
 publish msg="":
 	#!/usr/bin/env bash
@@ -50,14 +48,20 @@ publish msg="":
 	just build
 
 	# 3. 版本号 bump
-	next_version=$(git cliff --bumped-version | tail -n 1)
-	pnpm version "${next_version}"
+	raw_version=$(git cliff --bumped-version | tail -n 1)
+	next_version=${raw_version#v}
+
+	pnpm version "${next_version}" --no-git-tag-version
+
 	just update-changelog
+
+	git add package.json CHANGELOG.md
+	just commit "chore(release): Bump version v${next_version}"
 
 	# 4. 发布
 	pnpm publish
 	echo "已发布 ${next_version}"
 
 	# 5. 打 tag 推送
-	git tag -a "v${next_version}" -m "{{msg}}"
+	git tag -a "v${next_version}" -m "Release v${next_version}: {{msg}}"
 	git push --follow-tags
