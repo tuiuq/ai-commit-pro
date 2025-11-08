@@ -1,4 +1,4 @@
-import {commit} from "@/utils/simpleGit.js";
+import {commit} from "@/utils/simpleGit.ts";
 
 export function handleOutput(message: string, shouldCommit: boolean) {
   if (shouldCommit) {

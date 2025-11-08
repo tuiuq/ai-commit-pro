@@ -1,10 +1,10 @@
 import { Command } from "commander"
 import { buildPrompts } from "@/utils/buildPrompts.ts"
 import { getChangedFiles, getGitDiff, isChanged } from "@/utils/simpleGit.ts"
-import {generateCommitMessage, initializeOpenAI} from "@/commands/generate/openai.js";
-import {loadCustomPrompt} from "@/commands/generate/prompt.js";
-import {handleOutput} from "@/commands/generate/handler.js";
-import {IGenerateOptions} from "@/commands/generate/types.js";
+import {generateCommitMessage, initializeOpenAI} from "@/commands/generate/openai.ts";
+import {loadCustomPrompt} from "@/commands/generate/prompt.ts";
+import {handleOutput} from "@/commands/generate/handler.ts";
+import {IGenerateOptions} from "@/commands/generate/types.ts";
 
 const generateCommand = new Command()
 

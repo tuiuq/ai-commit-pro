@@ -1,4 +1,4 @@
-import {parseEnv} from "@/utils/env.js";
+import {parseEnv} from "@/utils/env.ts";
 import z from "zod";
 import OpenAI from "openai";
 
