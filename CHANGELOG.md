@@ -1,3 +1,27 @@
+## [1.2.0] - 2025-11-08
+
+### 🚀 Features
+
+- *(generate)* 🎉 增加生成提交信息功能
+- *(generate)* 🎉 Add language option to generate commit message
+
+### 🚜 Refactor
+
+- *(generate)* ♻️ 更新模块导入路径为 TypeScript 格式
+
+### 📚 Documentation
+
+- *(系统提示)* 📚 更新系统提示文件
+
+### ⚙️ Miscellaneous Tasks
+
+- *(justfile)* 🔧 Update commit message script
+- *(justfile)* ♻️ 优化发布流程
+## [1.1.1] - 2025-11-08
+
+### ⚙️ Miscellaneous Tasks
+
+- Update changelog
 ## [1.1.1] - 2025-11-08
 
 ### 🚜 Refactor
