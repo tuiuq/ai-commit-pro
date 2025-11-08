@@ -63,5 +63,15 @@ publish msg="":
 	echo "已发布 ${next_version}"
 
 	# 5. 打 tag 推送
-	git tag -a "v${next_version}" -m "Release v${next_version}: {{msg}}"
+	VERSION="v${next_version}"
+	USER_MSG="{{msg}}"
+	FINAL_TAG_MSG=""
+
+	if [[ -n "${USER_MSG}" ]]; then
+		FINAL_TAG_MSG="Release ${VERSION}: ${USER_MSG}"
+	else
+		FINAL_TAG_MSG="Release version ${VERSION}"
+	fi
+
+	git tag -a "${VERSION}" -m "${FINAL_TAG_MSG}"
 	git push --follow-tags
