@@ -3,7 +3,7 @@ import { parseEnv } from "@/utils/env.ts"
 import z from "zod"
 import OpenAI from "openai"
 import { buildPrompts } from "@/utils/buildPrompts.ts"
-import { getChangedFiles, getGitDiff, isChanged } from "@/utils/simpleGit.ts"
+import { getChangedFiles, getGitDiff, isChanged, commit as sendCommit } from "@/utils/simpleGit.ts"
 import { resolve } from "node:path"
 import { readFile } from "node:fs/promises"
 
@@ -66,7 +66,7 @@ generateCommand
     }
     
     if (commit) {
-      commit(message)
+      sendCommit(message)
       console.log("Changes committed successfully!")
     } else {
       console.log(message)
