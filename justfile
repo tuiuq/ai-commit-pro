@@ -1,10 +1,13 @@
+ROOT := `git rev-parse --show-toplevel`
+BIN := join(ROOT, "node_modules/.bin")
+
 default: build
 
 clean:
   rm -rf dist
-  
+
 type:
-  tsc -p tsconfig.build.json
+  {{BIN}}/tsc -p tsconfig.build.json
 
 bundle:
   bun run esbuild.config.ts
