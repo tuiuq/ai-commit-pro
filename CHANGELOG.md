@@ -1,3 +1,8 @@
+## [1.2.1] - 2025-11-08
+
+### 🚜 Refactor
+
+- *(justfile)* ♻️ 修改版本号提取逻辑
 ## [1.2.0] - 2025-11-08
 
 ### 🚀 Features
@@ -15,13 +20,10 @@
 
 ### ⚙️ Miscellaneous Tasks
 
+- Update changelog
 - *(justfile)* 🔧 Update commit message script
 - *(justfile)* ♻️ 优化发布流程
-## [1.1.1] - 2025-11-08
-
-### ⚙️ Miscellaneous Tasks
-
-- Update changelog
+- *(release)* Bump version vvv1.2.0
 ## [1.1.1] - 2025-11-08
 
 ### 🚜 Refactor
