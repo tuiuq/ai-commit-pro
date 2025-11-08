@@ -4,6 +4,7 @@ import { getChangedFiles, getGitDiff, isChanged } from "@/utils/simpleGit.ts"
 import {generateCommitMessage, initializeOpenAI} from "@/commands/generate/openai.js";
 import {loadCustomPrompt} from "@/commands/generate/prompt.js";
 import {handleOutput} from "@/commands/generate/handler.js";
+import {IGenerateOptions} from "@/commands/generate/types.js";
 
 const generateCommand = new Command()
 
@@ -13,7 +14,8 @@ generateCommand
   .description("Generate a git commit message using AI")
   .option("-c, --commit", "Directly commit the generated message")
   .option("-p, --prompt <path>", "Path to a file containing custom prompt instructions")
-  .action(async ({ commit = false, prompt }) => {
+  .option("-l, --lang <language>", "Language to use for the commit message")
+  .action(async ({ commit = false, prompt, lang = "en" }: IGenerateOptions) => {
     if (!isChanged()) {
       console.error("No changes to commit.")
       return
@@ -25,7 +27,7 @@ generateCommand
     const { systemPrompt, userPrompt } = await buildPrompts({
       diff: getGitDiff().join("\n"),
       files: getChangedFiles(),
-      lang: "en",
+      lang,
       customContext
     })
 
