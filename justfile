@@ -21,7 +21,7 @@ dev:
   watchexec -e ts --clear --restart -- just build
 
 commit msg:
-	git commit -m "$(printf '%s' '{{msg}}')"
+	@git commit -m "$(printf '%s' '{{msg}}')"
 
 update-changelog:
 	git cliff --bump -o;
