@@ -49,7 +49,7 @@ publish msg="":
 
 	# 3. 版本号 bump
 	raw_version=$(git cliff --bumped-version | tail -n 1)
-	next_version=${raw_version#v}
+	next_version=$(echo "${raw_version}" | sed 's/^v*//')
 
 	pnpm version "${next_version}" --no-git-tag-version
 
