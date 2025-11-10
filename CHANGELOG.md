@@ -1,4 +1,10 @@
 # Changelog
+## [1.2.6](https://github.com/tuiuq/ai-commit-pro/compare/v1.2.5..v1.2.6) - 2025-11-10
+
+### 🚜 Refactor
+
+- *(justfile)* ♻️ 更新 GitHub Release 创建命令格式 - ([5669fc3](https://github.com/tuiuq/ai-commit-pro/commit/5669fc353f86cae156cedc3036d8ed104b64dd87))
+
 ## [1.2.5](https://github.com/tuiuq/ai-commit-pro/compare/v1.2.4..v1.2.5) - 2025-11-10
 
 ### 🚜 Refactor
