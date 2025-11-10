@@ -22,11 +22,14 @@ export function isChanged() {
 }
 
 export function commit(message: string) {
-  if (message.trim()) {
+  if (message.trim() === "") {
     return;
   }
 
-  const cleanMessage = message.trim();
+  const cleanMessage = message
+    .replace(/^```(?:\w+)?\n/, "")
+    .replace(/```$/, "")
+    .trim();
 
   const result = spawnSync("git", ["commit", "-m", cleanMessage], {
     encoding: "utf-8",
