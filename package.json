@@ -1,6 +1,6 @@
 {
   "name": "@tuiuq/ai-commit-pro",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "AI-powered git commit message generator using Moonshot API",
   "type": "module",
   "types": "./dist/types/index.d.ts",

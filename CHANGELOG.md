@@ -1,10 +1,18 @@
 # Changelog
-## [unreleased]
+## [1.2.5](https://github.com/tuiuq/ai-commit-pro/compare/v1.2.4..v1.2.5) - 2025-11-10
 
 ### 🚜 Refactor
 
 - *(cliff.toml)* ♻️ 更新 Cliff.toml 配置文件以支持更丰富的 commit 信息和发布流程 - ([659dc2a](https://github.com/tuiuq/ai-commit-pro/commit/659dc2a366fb556ce8e9de92309e6763bbb85664))
 - *(justfile)* ♻️ 优化发布流程，添加自动生成 release notes 和 GitHub Release 创建 - ([9662a27](https://github.com/tuiuq/ai-commit-pro/commit/9662a27e589f90b772f17b41b3dcf245b6273e42))
+
+### 📚 Documentation
+
+- *(CHANGELOG)* 📚 更新项目变更日志 - ([90281ef](https://github.com/tuiuq/ai-commit-pro/commit/90281efc640a6a7068034f95a10e64e149636aeb))
+
+### ⚙️ Miscellaneous Tasks
+
+- *(cliff.toml)* 🔧 Add GitHub token configuration for remote - ([f107214](https://github.com/tuiuq/ai-commit-pro/commit/f107214b78081a82614b4f315bc500b82e739697))
 
 ## [1.2.4](https://github.com/tuiuq/ai-commit-pro/compare/v1.2.3..v1.2.4) - 2025-11-10
 
