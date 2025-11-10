@@ -1,8 +1,20 @@
+## [1.2.3] - 2025-11-10
+
+### 🚜 Refactor
+
+- *(utils/simpleGit)* ♻️ 替换 execSync 为 spawnSync 以处理 git commit
+- *(generate)* ♻️ 修改 handleOutput 函数以记录 commit 操作结果
+- *(utils)* ♻️ 优化 commit 函数中消息处理逻辑
+- *(generate)* ♻️ 简化 commit 操作流程
 ## [1.2.2] - 2025-11-08
 
 ### 🚜 Refactor
 
 - *(justfile)* ♻️ 优化发布打 tag 逻辑
+
+### ⚙️ Miscellaneous Tasks
+
+- *(release)* Bump version v1.2.2
 ## [1.2.1] - 2025-11-08
 
 ### 🚜 Refactor
