@@ -1,3 +1,8 @@
+[remote]
+owner = "tuiuq"
+repo = "ai-commit-pro"
+token = "$GITHUB_TOKEN"
+
 [changelog]
 header = "# Changelog"
 body = """
