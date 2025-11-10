@@ -1,3 +1,8 @@
+## [1.2.4] - 2025-11-10
+
+### 🚜 Refactor
+
+- *(justfile)* ♻️ 优化发布流程
 ## [1.2.3] - 2025-11-10
 
 ### 🚜 Refactor
@@ -6,6 +11,10 @@
 - *(generate)* ♻️ 修改 handleOutput 函数以记录 commit 操作结果
 - *(utils)* ♻️ 优化 commit 函数中消息处理逻辑
 - *(generate)* ♻️ 简化 commit 操作流程
+
+### ⚙️ Miscellaneous Tasks
+
+- *(release)* Bump version v1.2.3
 ## [1.2.2] - 2025-11-08
 
 ### 🚜 Refactor
@@ -17,15 +26,6 @@
 - *(release)* Bump version v1.2.2
 ## [1.2.1] - 2025-11-08
 
-### 🚜 Refactor
-
-- *(justfile)* ♻️ 修改版本号提取逻辑
-
-### ⚙️ Miscellaneous Tasks
-
-- *(release)* Bump version v1.2.1
-## [1.2.0] - 2025-11-08
-
 ### 🚀 Features
 
 - *(generate)* 🎉 增加生成提交信息功能
@@ -34,6 +34,7 @@
 ### 🚜 Refactor
 
 - *(generate)* ♻️ 更新模块导入路径为 TypeScript 格式
+- *(justfile)* ♻️ 修改版本号提取逻辑
 
 ### 📚 Documentation
 
@@ -45,6 +46,7 @@
 - *(justfile)* 🔧 Update commit message script
 - *(justfile)* ♻️ 优化发布流程
 - *(release)* Bump version vvv1.2.0
+- *(release)* Bump version v1.2.1
 ## [1.1.1] - 2025-11-08
 
 ### 🚜 Refactor
@@ -54,7 +56,6 @@
 ### 📚 Documentation
 
 - *(system)* 📚 Update system documentation format
-## [1.1.0] - 2025-11-08
 
 ### ⚙️ Miscellaneous Tasks
 
