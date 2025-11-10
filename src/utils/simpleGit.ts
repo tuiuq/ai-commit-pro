@@ -1,4 +1,4 @@
-import { execSync } from "node:child_process";
+import {execSync, spawnSync} from "node:child_process";
 import { resolve } from "node:path";
 
 export function getTopLevel() {
@@ -22,14 +22,21 @@ export function isChanged() {
 }
 
 export function commit(message: string) {
-  const lines = message
-    .split("\n")
-    .filter(line => line.trim() !== "")
-  if (lines.length === 0) {
+  if (message.trim()) {
     return;
   }
-  const command = lines
-    .map(line => `-m "${line.replace(/"/g, '\\"')}"`)
-    .join(" ");
-  execSync(`git commit ${command}`, { encoding: "utf-8" })
+
+  const cleanMessage = message.trim();
+
+  const result = spawnSync("git", ["commit", "-m", cleanMessage], {
+    encoding: "utf-8",
+    stdio: "inherit",
+  })
+
+  if (result.error) {
+    console.error("Git commit failed: ", result.error.message);
+    throw result.error;
+  }
+
+  return result.stdout;
 }
