@@ -63,16 +63,19 @@ publish msg="":
 	pnpm publish
 	echo "已发布 ${next_version}"
 
-	# 7. 打 tag 推送
+	# 7. 生成 release notes
+	RELEASE_NOTES="$(git cliff -l)"
 	VERSION="v${next_version}"
 	USER_MSG="{{msg}}"
-	FINAL_TAG_MSG=""
 
-	if [[ -n "${USER_MSG}" ]]; then
-		FINAL_TAG_MSG="Release ${VERSION}: ${USER_MSG}"
-	else
-		FINAL_TAG_MSG="Release version ${VERSION}"
+	if [[ -n "{{msg}}" ]]; then
+	  RELEASE_NOTES="${RELEASE_NOTES}"$'\n\n'"{{msg}}"
 	fi
 
-	git tag -a "${VERSION}" -m "${FINAL_TAG_MSG}"
-	git push --follow-tags
+	# 8. 创建 tag 并推送
+	git tag -a "${VERSION}" -m "${RELEASE_NOTES}"
+	git push origin main --follow-tags
+
+	# 9. 创建Release
+	gh release create "${VERSION}" --title "${VERSION}" --notes "${RELEASE_NOTES}"
+	echo "GitHub Release created: ${VERSION}"
