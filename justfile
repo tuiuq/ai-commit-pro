@@ -77,5 +77,5 @@ publish msg="":
 	git push origin main --follow-tags
 
 	# 9. 创建Release
-	gh release create "${VERSION}" --title "${VERSION}" --notes "${RELEASE_NOTES}"
+	gh release create "${VERSION}" --title "Release ${VERSION}" --notes "${RELEASE_NOTES}"
 	echo "GitHub Release created: ${VERSION}"
