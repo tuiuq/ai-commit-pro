@@ -43,26 +43,27 @@ publish msg="":
 	  exit 1
 	fi
 
-	# 2. 拉最新代码并构建
-	git pull --rebase
-	just build
+	# 2. 拉取最新代码
+	git pull --rebase --tags
 
 	# 3. 版本号 bump
 	raw_version=$(git cliff --bumped-version | tail -n 1)
 	next_version=$(echo "${raw_version}" | sed 's/^v*//')
-
 	pnpm version "${next_version}" --no-git-tag-version
 
-	just update-changelog
+	# 4. 构建打包
+	just build
 
+	# 5. 更新changelog并提交
+	just update-changelog
 	git add package.json CHANGELOG.md
 	just commit "chore(release): Bump version v${next_version}"
 
-	# 4. 发布
+	# 6. 发布
 	pnpm publish
 	echo "已发布 ${next_version}"
 
-	# 5. 打 tag 推送
+	# 7. 打 tag 推送
 	VERSION="v${next_version}"
 	USER_MSG="{{msg}}"
 	FINAL_TAG_MSG=""
