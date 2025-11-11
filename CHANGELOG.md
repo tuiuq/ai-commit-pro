@@ -1,4 +1,21 @@
 # Changelog
+## [1.4.0](https://github.com/tuiuq/ai-commit-pro/compare/v1.3.0..v1.4.0) - 2025-11-11
+
+### ⛰️  Features
+
+- *(commands/generate)* 🎉 Update language option default value to "en" - ([0fbbb9d](https://github.com/tuiuq/ai-commit-pro/commit/0fbbb9d1685bf22de07bfa08be86adedbc721daf))
+- *(utils)* 🎉 添加 Logger 类以支持不同级别的日志记录功能 - ([ae9682e](https://github.com/tuiuq/ai-commit-pro/commit/ae9682e747424f3890d4167cd46965791bb868fb))
+- *(utils)* 🎉 Add formatDate function to format date strings - ([9a1fc3f](https://github.com/tuiuq/ai-commit-pro/commit/9a1fc3fc2a9d1f0cdaa09b533cabcb2237731f5d))
+- *(utils)* 🎉 add addPrefixZero function - ([e3d7882](https://github.com/tuiuq/ai-commit-pro/commit/e3d7882582f4f70f12390f7a9f9e135de9826506))
+
+### 🚜 Refactor
+
+- *(generate)* ♻️ 优化生成 Git 提交信息的代码逻辑 - ([fbb6245](https://github.com/tuiuq/ai-commit-pro/commit/fbb62453d8d3dc103058426089bc6b005f739c23))
+- *(generate)* ♻️ 更新导入路径为 TypeScript 标准 - ([ff372c3](https://github.com/tuiuq/ai-commit-pro/commit/ff372c3618c8c7b036d69c4803a7f55b091cd657))
+- *(generate)* ♻️ 优化生成器功能及日志记录 - ([f6a8d36](https://github.com/tuiuq/ai-commit-pro/commit/f6a8d36849cfe5a77b9f22f3533a50e2794e9214))
+- *(generate)* ♻️ Update zod import to include ZodType - ([cf3209e](https://github.com/tuiuq/ai-commit-pro/commit/cf3209e9ff3434eac02d50f34fdc381de382aff0))
+- *(generate)* ♻️ 使用zod校验generate命令的选项 - ([2bf7819](https://github.com/tuiuq/ai-commit-pro/commit/2bf7819e808a3ed8bccb7212099e1b9cd697bd16))
+
 ## [1.3.0](https://github.com/tuiuq/ai-commit-pro/compare/v1.2.6..v1.3.0) - 2025-11-11
 
 ### ⛰️  Features
