@@ -14,7 +14,7 @@ generateCommand
   .description("Generate a git commit message using AI")
   .option("-c, --commit", "Directly commit the generated message")
   .option("-p, --prompt <path>", "Path to a file containing custom prompt instructions")
-  .option("-l, --lang <language>", "Language to use for the commit message")
+  .option("-l, --lang <language>", "Language to use for the commit message", "en")
   .action(async ({ commit = false, prompt, lang = "en" }: IGenerateOptions) => {
     if (!isChanged()) {
       console.error("No changes to commit.")
