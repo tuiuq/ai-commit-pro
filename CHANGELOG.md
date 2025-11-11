@@ -1,4 +1,15 @@
 # Changelog
+## [1.6.0](https://github.com/tuiuq/ai-commit-pro/compare/v1.5.0..v1.6.0) - 2025-11-11
+
+### ⛰️  Features
+
+- *(generate)* 🎉 增加交互式提交信息生成模式 - ([b1001e9](https://github.com/tuiuq/ai-commit-pro/commit/b1001e98a931e48b2b6e87eef051d005279a5759))
+- *(generate)* 🎉 添加交云互式提交消息生成功能 - ([42dac35](https://github.com/tuiuq/ai-commit-pro/commit/42dac350fd2ff92b9f76959b429809ea25f63795))
+
+### 🚜 Refactor
+
+- *(commands/generate)* ♻️ Convert JavaScript file to TypeScript - ([afa16bc](https://github.com/tuiuq/ai-commit-pro/commit/afa16bc7c428712ce28b5dc952a014091efd2c76))
+
 ## [1.5.0](https://github.com/tuiuq/ai-commit-pro/compare/v1.4.0..v1.5.0) - 2025-11-11
 
 ### ⛰️  Features
