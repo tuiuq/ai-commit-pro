@@ -44,16 +44,16 @@ export async function generateCommitMessage(
       temperature: 0.7
     })
 
-    const message = completion.choices[0]?.message.content
+    const message = completion.choices[0]?.message?.content ?? "";
 
     if (!message) {
-      console.error("Failed to generate commit message")
-      process.exit(1)
+      throw new Error("Failed to generate commit message: empty response from model.")
     }
 
     return message
   } catch (error) {
-    console.error("Error generating commit message from OpenAI", error)
-    process.exit(1)
+    throw new Error(`Error generating commit message from OpenAI: ${(error as Error).message}`, {
+      cause: error
+    })
   }
 }
