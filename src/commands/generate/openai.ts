@@ -1,16 +1,21 @@
 import {parseEnv} from "@/utils/env.ts";
 import z from "zod";
 import OpenAI from "openai";
+import {logger} from "@/utils/Logger.ts";
 
 export function initializeOpenAI() {
   const env = parseEnv(
     z.object({
-      OPENAI_API_KEY: z.string(),
+      OPENAI_API_KEY: z.string().min(1).describe("OPENAI_API_KEY 是必需的"),
       OPENAI_MODEL: z.string(),
-      OPENAI_BASE_URL: z.string().url()
+      OPENAI_BASE_URL: z.string().url().describe("OPENAI_BASE_URL 必需是有效的 URL")
     })
   )
 
+  logger.debug("初始化 OpenAI 客户端", {
+    baseURL: env.OPENAI_BASE_URL,
+    model: env.OPENAI_MODEL
+  });
   const client = new OpenAI({
     baseURL: env.OPENAI_BASE_URL,
     apiKey: env.OPENAI_API_KEY,
@@ -30,6 +35,10 @@ export async function generateCommitMessage(
   userPrompt: string,
 ) {
   try {
+    logger.debug("发送 OpenAI API 请求", {
+      model,
+      temperature: 0.7
+    })
     const completion = await client.chat.completions.create({
       model,
       messages: [
@@ -48,12 +57,29 @@ export async function generateCommitMessage(
     const message = completion.choices[0]?.message?.content ?? "";
 
     if (!message) {
-      throw new Error("Failed to generate commit message: empty response from model.")
+      throw new Error("AI 返回了空响应")
     }
 
+    logger.debug("OpenAI API 响应", {
+      usage: completion.usage,
+      finishReason: completion.choices[0]?.finish_reason
+    })
     return message
   } catch (error) {
-    throw new Error(`Error generating commit message from OpenAI: ${(error as Error).message}`, {
+    if (error instanceof OpenAI.APIError) {
+      logger.error("OpenAI API 错误", {
+        status: error.status,
+        code: error.code,
+        message: error.message
+      })
+      throw new Error(`AI 服务错误: ${(error as Error).message}`, {
+        cause: error
+      })
+    }
+    logger.error("生成提交信息失败: ", {
+      error: error instanceof Error ? error.message : error
+    })
+    throw new Error(`生成提交信息失败: ${(error as Error).message}`, {
       cause: error
     })
   }

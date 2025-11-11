@@ -11,72 +11,89 @@ import {logger} from "@/utils/Logger.ts";
 const generateCommand = new Command()
 
 const schema = z.object({
-  commit: z.boolean().default(false).describe("Directly commit the generated message"),
-  prompt: z.string().optional().describe("Path to a file containing custom prompt instructions"),
-  lang: z.enum(["en", "zh"]).default("en").describe("Language to use for the commit message"),
-  verbose: z.boolean().default(false).describe("Verbose output")
+  commit: z.boolean().default(false).describe("直接提交生成的信息"),
+  prompt: z.string().optional().describe("包含自定义提示词的文件路径"),
+  lang: z.enum(["en", "zh"]).default("en").describe("提交信息使用的语言"),
+  verbose: z.boolean().default(false).describe("启用详细日志输出")
 }) as ZodType<IGenerateOptions>;
 
 generateCommand
   .name("generate")
   .alias("g")
-  .description("Generate a git commit message using AI")
-  .option("-c, --commit", "Directly commit the generated message")
-  .option("-p, --prompt <path>", "Path to a file containing custom prompt instructions")
-  .option("-l, --lang <language>", "Language to use for the commit message", "en")
-  .option("-v, --verbose", "Verbose output")
+  .description("使用 AI 生成 git 提交信息")
+  .option("-c, --commit", "直接提交生成信息")
+  .option("-p, --prompt <path>", "包含自定义提示词的文件路径")
+  .option("-l, --lang <language>", "提交信息使用的语言", "en")
+  .option("-v, --verbose", "启用详细日志输出")
   .action(async (options: IGenerateOptions) => {
     try {
-    const parsedOptions = schema.safeParse(options);
-    if (parsedOptions.error) {
-      throw parsedOptions.error;
-    }
-    const {
-      commit,
-      prompt,
-      lang,
-      verbose
-    } = parsedOptions.data;
+      logger.setLevel(options.verbose ? "debug" : "info");
 
-    logger.setLevel(verbose ? "debug" : "info");
+      logger.info("🚀 开始生成提交信息...")
 
-    logger.info("🚀 Start generating commit messages...")
+      const parsedOptions = schema.safeParse(options);
+      if (parsedOptions.error) {
+        throw parsedOptions.error;
+      }
 
-    if (!isChanged()) {
-      logger.error("No changes need to be submitted.")
-      return
-    }
+      const {
+        commit,
+        prompt,
+        lang,
+        verbose
+      } = parsedOptions.data;
 
-    logger.info("📝 Analyze code changes...")
-    const changedFiles = getChangedFiles()
-    const gitDiff = getGitDiff()
+      logger.debug("解析后的参数: ", {
+        commit,
+        prompt,
+        lang,
+        verbose
+      })
 
-    logger.info(`📄 ${changedFiles.length} file changes detected`)
+      if (!isChanged()) {
+        logger.error("没有需要提交的变更")
+        return
+      }
 
-    logger.info("🔧 Initialize AI service...")
-    const { client, model } = initializeOpenAI()
+      logger.info("📝 分析代码变更")
+      const changedFiles = getChangedFiles()
+      const gitDiff = getGitDiff()
 
-    const customContext = await loadCustomPrompt(prompt)
+      logger.info(`📄 检测到 ${changedFiles.length} 个文件变更`)
+      logger.debug("变更文件列表: ", changedFiles)
+      logger.debug("Git diff 内容: ", gitDiff)
 
-    logger.info("💭 Build prompt words...")
-    const { systemPrompt, userPrompt } = await buildPrompts({
-      diff: gitDiff.join("\n"),
-      files: changedFiles,
-      lang,
-      customContext
-    })
 
-    logger.info("🤖 AI is generating submission information...")
-    const message = await generateCommitMessage(
-      client,
-      model,
-      systemPrompt,
-      userPrompt
-    )
+      logger.info("🔧 初始化 AI 服务...")
+      const { client, model } = initializeOpenAI()
+      logger.debug("OpenAI 配置: ", {
+        model
+      })
 
-    handleOutput(message, commit)
+      const customContext = await loadCustomPrompt(prompt)
+
+      logger.info("💭 构建提示词...")
+      const { systemPrompt, userPrompt } = await buildPrompts({
+        diff: gitDiff.join("\n"),
+        files: changedFiles,
+        lang,
+        customContext
+      })
+
+      logger.debug("系统提示词: ", systemPrompt)
+      logger.debug("用户提示词: ", userPrompt)
+
+      logger.info("🤖 AI 正在生成提交信息...")
+      const message = await generateCommitMessage(
+        client,
+        model,
+        systemPrompt,
+        userPrompt
+      )
+
+      handleOutput(message, commit)
     } catch (error) {
-      logger.info("💥 Error occurred while generating submission information: ", (error as Error).message)
+      logger.error("💥 生成提交信息时出错: ", (error as Error).message)
       process.exit(1)
     }
   })
