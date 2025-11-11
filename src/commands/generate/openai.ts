@@ -7,13 +7,14 @@ export function initializeOpenAI() {
     z.object({
       OPENAI_API_KEY: z.string(),
       OPENAI_MODEL: z.string(),
-      OPENAI_BASE_URL: z.string()
+      OPENAI_BASE_URL: z.string().url()
     })
   )
 
   const client = new OpenAI({
     baseURL: env.OPENAI_BASE_URL,
     apiKey: env.OPENAI_API_KEY,
+    timeout: 30 * 1000
   })
 
   return {

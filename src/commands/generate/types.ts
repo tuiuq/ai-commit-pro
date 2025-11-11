@@ -4,4 +4,5 @@ export interface IGenerateOptions {
   commit: boolean;
   prompt?: string;
   lang: Language;
+  verbose: boolean;
 }
