@@ -8,18 +8,17 @@ export async function loadCustomPrompt(
     return undefined;
   }
 
+  const customPromptPath = resolve(promptPath)
   try {
-    const customPromptPath = resolve(promptPath)
     return await readFile(customPromptPath, "utf8")
   } catch (err) {
     if (err instanceof Error && "code" in err && err.code === "ENOENT") {
-      console.error(
-        `The file at path "${resolve(promptPath)}" was not found.`
-      );
-    } else {
-      console.error(err)
+      throw new Error(`Custom prompt file not found at path "${customPromptPath}": ${(err as Error).message}`,
+        {
+          cause: err
+        }
+      )
     }
-
-    process.exit(1)
+    throw err
   }
 }
