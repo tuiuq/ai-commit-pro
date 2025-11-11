@@ -1,4 +1,17 @@
 # Changelog
+## [1.3.0](https://github.com/tuiuq/ai-commit-pro/compare/v1.2.6..v1.3.0) - 2025-11-11
+
+### ⛰️  Features
+
+- *(generate)* 🎉 添加提交结果返回功能 - ([98d223c](https://github.com/tuiuq/ai-commit-pro/commit/98d223ceda260fff51815ec4159c0cee483905bb))
+
+### 🚜 Refactor
+
+- *(generate)* ♻️ Remove unnecessary newline at end of file - ([c5df555](https://github.com/tuiuq/ai-commit-pro/commit/c5df555d6f0778234fd1c352f90d1b8ae6684b35))
+- *(generate/openai)* ♻️ 优化 OpenAI 生成 commit 消息的错误处理 - ([b15cffc](https://github.com/tuiuq/ai-commit-pro/commit/b15cffcabc31bad9ceb2452fd754698bb3c011b2))
+- *(generate/prompt)* ♻️ 优化自定义提示加载逻辑 - ([8f41e59](https://github.com/tuiuq/ai-commit-pro/commit/8f41e5917e6257c0fc3cde7f65c3e98fb66ba70b))
+- *(openai)* ♻️ 格式化文件结尾 - ([6e8c9cf](https://github.com/tuiuq/ai-commit-pro/commit/6e8c9cfb399847d074cddc947aff018416a85cce))
+
 ## [1.2.6](https://github.com/tuiuq/ai-commit-pro/compare/v1.2.5..v1.2.6) - 2025-11-10
 
 ### 🚜 Refactor
