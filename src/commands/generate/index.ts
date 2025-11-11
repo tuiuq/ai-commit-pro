@@ -5,7 +5,7 @@ import {generateCommitMessage, initializeOpenAI} from "@/commands/generate/opena
 import {loadCustomPrompt} from "@/commands/generate/prompt.ts";
 import {handleOutput} from "@/commands/generate/handler.ts";
 import {IGenerateOptions} from "@/commands/generate/types.ts";
-import z from "zod";
+import z, {ZodType} from "zod";
 
 const generateCommand = new Command()
 
@@ -13,7 +13,7 @@ const schema = z.object({
   commit: z.boolean().default(false).describe("Directly commit the generated message"),
   prompt: z.string().optional().describe("Path to a file containing custom prompt instructions"),
   lang: z.enum(["en", "zh"]).default("en").describe("Language to use for the commit message")
-})
+}) as ZodType<IGenerateOptions>;
 
 generateCommand
   .name("generate")
