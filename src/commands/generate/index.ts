@@ -6,7 +6,7 @@ import {loadCustomPrompt} from "@/commands/generate/prompt.ts";
 import {handleOutput} from "@/commands/generate/handler.ts";
 import {IGenerateOptions} from "@/commands/generate/types.ts";
 import z, {ZodType} from "zod";
-import {logger} from "@/utils/Logger.js";
+import {logger} from "@/utils/Logger.ts";
 
 const generateCommand = new Command()
 

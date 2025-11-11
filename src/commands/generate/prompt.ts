@@ -1,6 +1,6 @@
 import {resolve} from "node:path";
 import {readFile} from "node:fs/promises";
-import {logger} from "@/utils/Logger.js";
+import {logger} from "@/utils/Logger.ts";
 
 export async function loadCustomPrompt(
   promptPath?: string

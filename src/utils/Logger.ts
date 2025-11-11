@@ -1,5 +1,5 @@
 import chalk from "chalk"
-import {formatDate} from "@/utils/formatDate.js";
+import {formatDate} from "@/utils/formatDate.ts";
 
 export const LogLevel = {
   debug: {

@@ -1,4 +1,4 @@
-import {addPrefixZero} from "@/utils/addPrefixZero.js";
+import {addPrefixZero} from "@/utils/addPrefixZero.ts";
 
 export function formatDate(
   date: Date | number,

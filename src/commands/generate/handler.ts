@@ -1,5 +1,5 @@
 import {commit} from "@/utils/simpleGit.ts";
-import {logger} from "@/utils/Logger.js";
+import {logger} from "@/utils/Logger.ts";
 
 export function handleOutput(message: string, shouldCommit: boolean) {
   if (shouldCommit) {
