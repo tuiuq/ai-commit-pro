@@ -7,6 +7,7 @@ import {handleOutput} from "@/commands/generate/handler.ts";
 import {IGenerateOptions} from "@/commands/generate/types.ts";
 import z, {ZodType} from "zod";
 import {logger} from "@/utils/Logger.ts";
+import {runInteractiveMode} from "@/commands/generate/runInteractiveMode.js";
 
 const generateCommand = new Command()
 
@@ -14,7 +15,8 @@ const schema = z.object({
   commit: z.boolean().default(false).describe("直接提交生成的信息"),
   prompt: z.string().optional().describe("包含自定义提示词的文件路径"),
   lang: z.enum(["en", "zh"]).default("en").describe("提交信息使用的语言"),
-  verbose: z.boolean().default(false).describe("启用详细日志输出")
+  verbose: z.boolean().default(false).describe("启用详细日志输出"),
+  interactive: z.boolean().default(true).describe("启用交互式模式")
 }) as ZodType<IGenerateOptions>;
 
 generateCommand
@@ -25,6 +27,7 @@ generateCommand
   .option("-p, --prompt <path>", "包含自定义提示词的文件路径")
   .option("-l, --lang <language>", "提交信息使用的语言", "en")
   .option("-v, --verbose", "启用详细日志输出")
+  .option("-i, --no-interactive", "禁用交互式模式")
   .action(async (options: IGenerateOptions) => {
     try {
       logger.setLevel(options.verbose ? "debug" : "info");
@@ -40,14 +43,16 @@ generateCommand
         commit,
         prompt,
         lang,
-        verbose
+        verbose,
+        interactive
       } = parsedOptions.data;
 
       logger.debug("解析后的参数: ", {
         commit,
         prompt,
         lang,
-        verbose
+        verbose,
+        interactive
       })
 
       if (!isChanged()) {
@@ -83,15 +88,38 @@ generateCommand
       logger.debug("系统提示词: ", systemPrompt)
       logger.debug("用户提示词: ", userPrompt)
 
-      logger.info("🤖 AI 正在生成提交信息...")
-      const message = await generateCommitMessage(
-        client,
-        model,
-        systemPrompt,
-        userPrompt
-      )
+      if (commit) {
+        logger.info("🤖 AI 正在生成提交信息...")
+        const message = await generateCommitMessage(
+          client,
+          model,
+          systemPrompt,
+          userPrompt
+        )
 
-      handleOutput(message, commit)
+        handleOutput(message, true)
+        return;
+      }
+
+      if (interactive) {
+        await runInteractiveMode(
+          client,
+          model,
+          systemPrompt,
+          userPrompt
+        )
+      } else {
+        logger.info("🤖 AI 正在生成提交信息...")
+        const message = await generateCommitMessage(
+          client,
+          model,
+          systemPrompt,
+          userPrompt
+        )
+
+        handleOutput(message, false)
+        return;
+      }
     } catch (error) {
       logger.error("💥 生成提交信息时出错: ", (error as Error).message)
       process.exit(1)

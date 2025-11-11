@@ -7,6 +7,7 @@ export interface IGenerateOptions {
   prompt?: string;
   lang: Language;
   verbose: boolean;
+  interactive: boolean;
 }
 
 export interface InteractiveOptions {
