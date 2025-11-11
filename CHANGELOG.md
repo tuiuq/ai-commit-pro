@@ -1,4 +1,14 @@
 # Changelog
+## [1.5.0](https://github.com/tuiuq/ai-commit-pro/compare/v1.4.0..v1.5.0) - 2025-11-11
+
+### ⛰️  Features
+
+- *(package)* 🎉 添加 inquirer 依赖 - ([3f31ee9](https://github.com/tuiuq/ai-commit-pro/commit/3f31ee9ffa306b8d2d2ed199a30cc4dd318412d2))
+
+### 🚜 Refactor
+
+- *(justfile)* ♻️ 优化发布流程 - ([5923e17](https://github.com/tuiuq/ai-commit-pro/commit/5923e1747cffa3c5dc3505806b0b529b301b65a8))
+
 ## [1.4.0](https://github.com/tuiuq/ai-commit-pro/compare/v1.3.0..v1.4.0) - 2025-11-11
 
 ### ⛰️  Features
