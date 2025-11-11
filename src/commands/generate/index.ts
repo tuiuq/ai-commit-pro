@@ -7,7 +7,7 @@ import {handleOutput} from "@/commands/generate/handler.ts";
 import {IGenerateOptions} from "@/commands/generate/types.ts";
 import z, {ZodType} from "zod";
 import {logger} from "@/utils/Logger.ts";
-import {runInteractiveMode} from "@/commands/generate/runInteractiveMode.js";
+import {runInteractiveMode} from "@/commands/generate/runInteractiveMode.ts";
 
 const generateCommand = new Command()
 
