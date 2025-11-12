@@ -6,10 +6,10 @@ export const AIMessageSchema = z.object({
 })
 
 export const AIUsageSchema = z.object({
-  prompt_tokens: z.number().int().positive(),
-  completion_tokens: z.number().int().positive(),
-  total_tokens: z.number().int().positive(),
-}).optional()
+  prompt_tokens: z.number().int().positive().optional(),
+  completion_tokens: z.number().int().positive().optional(),
+  total_tokens: z.number().int().positive().optional(),
+});
 
 export const AIResponseSchema = z.object({
   content: z.string(),
