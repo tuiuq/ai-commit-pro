@@ -8,4 +8,10 @@ export const AIProviderConfigSchema = z.object({
   maxTokens: z.number().positive().optional().describe("Maximum number of tokens to generate"),
 })
 
+export const OpenAIConfigSchema = AIProviderConfigSchema.extend({
+  timeout: z.number().positive().default(30 * 1000).optional().describe("The timeout in milliseconds for requests to the OpenAI API."),
+  maxRetries: z.number().int().min(0).max(5).default(5).optional().describe("The maximum number of retries for requests to the OpenAI API.")
+})
+
 export type AIProviderConfig = z.infer<typeof AIProviderConfigSchema>
+export type OpenAIProviderConfig = z.infer<typeof OpenAIConfigSchema>
