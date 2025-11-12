@@ -14,7 +14,10 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@core/*": ["src/core/*"],
+      "@commands/*": ["src/commands/*"],
+      "@utils/*": ["src/utils/*"]
     },
     "types": ["node"],
     "allowSyntheticDefaultImports": true,
