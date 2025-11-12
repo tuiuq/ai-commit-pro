@@ -9,7 +9,7 @@ export const AIUsageSchema = z.object({
   prompt_tokens: z.number().int().positive().optional(),
   completion_tokens: z.number().int().positive().optional(),
   total_tokens: z.number().int().positive().optional(),
-});
+}).optional();
 
 export const AIResponseSchema = z.object({
   content: z.string(),
