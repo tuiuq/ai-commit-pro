@@ -21,6 +21,10 @@ export const GitFileInfoSchema = z.object({
   originalPath: z.string().optional().describe("Original path of the file if it was renamed"),
 })
 
+export const GitFileInfoSummarySchema = GitFileInfoSchema.extend({
+  summary: z.string().describe("Summary of the file changes"),
+})
+
 export const GitCommitSchema = z.object({
   hash: z.string().min(1, "Hash is required").describe("Hash of the commit"),
   author: z.string().min(1, "Author is required").describe("Author of the commit"),
@@ -34,6 +38,21 @@ export const GitBranchInfoSchema = z.object({
   lastCommit: z.string().min(1, "Last commit is required").describe("Last commit of the branch")
 })
 
+export const GitStatisticsSchema = z.object({
+  added: z.number().describe("Number of lines added"),
+  deleted: z.number().describe("Number of lines deleted"),
+  modified: z.number().describe("Number of lines modified"),
+  deletedCount: z.number().describe("Number of files deleted"),
+})
+
+export const GitChangedSummarySchema = z.object({
+  files: z.array(GitFileInfoSummarySchema).describe("Summary of the file changes"),
+  statistics: GitStatisticsSchema.describe("Statistics of the file changes"),
+})
+
 export type GitFileInfo = z.infer<typeof GitFileInfoSchema>
 export type GitCommit = z.infer<typeof GitCommitSchema>
 export type GitBranchInfo = z.infer<typeof GitBranchInfoSchema>
+export type GitFileInfoSummary = z.infer<typeof GitFileInfoSummarySchema>
+export type GitChangedSummary = z.infer<typeof GitChangedSummarySchema>
+export type GitStatistics = z.infer<typeof GitStatisticsSchema>
