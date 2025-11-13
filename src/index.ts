@@ -1,6 +1,6 @@
 import { Command } from "commander"
 import pkg from "../package.json" with { type: "json" }
-import generateCommand from "@/commands/generate";
+import generateCommand from "@commands/generate/index.ts";
 
 async function main() {
   const program = new Command()
