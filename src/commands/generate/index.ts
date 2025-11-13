@@ -1,6 +1,6 @@
-import { GitOperator } from "@/core/Git/GitOperator.ts";
+import { Generator } from "@core/Generator.ts";
+import { EnvironmentSchema } from "@core/types.ts";
 import { Command } from "commander"
-import * as console from "node:console";
 
 const generateCommand = new Command()
 
@@ -9,7 +9,7 @@ generateCommand
   .alias("g")
   .description("使用 AI 生成Commit Message信息")
   .action(() => {
-    console.log("使用 AI 获取Commit Message信息")
+    const generate = new Generator(EnvironmentSchema.parse(process.env))
   })
 
 export default generateCommand

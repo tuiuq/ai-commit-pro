@@ -29,8 +29,15 @@ export const OpenAIConfigSchema = AIProviderConfigSchema.extend({
   maxRetries: z.number().int().min(0).max(5).default(5).optional().describe("The maximum number of retries for requests to the OpenAI API.")
 })
 
+export const EnvironmentSchema = z.object({
+  OPENAI_API_KEY: z.string().min(1, "OPENAI_API_KEY is required").describe("OpenAI API key"),
+  OPENAI_BASE_URL: z.url().min(1, "OPENAI_BASE_URL is required").describe("OpenAI base URL"),
+  OPENAI_MODEL: z.string().min(1, "OPENAI_MODEL is required").describe("OpenAI model"),
+})
+
 export type AIMessage = z.infer<typeof AIMessageSchema>
 export type AIResponse = z.infer<typeof AIResponseSchema>
 export type AIUsage = z.infer<typeof AIUsageSchema>
 export type AIProviderConfig = z.infer<typeof AIProviderConfigSchema>
 export type OpenAIProviderConfig = z.infer<typeof OpenAIConfigSchema>
+export type Environment = z.infer<typeof EnvironmentSchema>
