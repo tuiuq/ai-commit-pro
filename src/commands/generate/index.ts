@@ -1,3 +1,4 @@
+import { GitOperator } from "@/core/Git/GitOperator.ts";
 import { Command } from "commander"
 import * as console from "node:console";
 
@@ -5,6 +6,7 @@ const generateCommand = new Command()
 
 generateCommand
   .name("generate")
+  .alias("g")
   .description("使用 AI 生成Commit Message信息")
   .action(() => {
     console.log("使用 AI 获取Commit Message信息")
