@@ -76,4 +76,31 @@ export abstract class AIProvider {
   protected validateResponse(response: unknown): AIResponse {
     return AIResponseSchema.parse(response);
   }
+  
+  /**
+   * Sets the model to use for the AI provider.
+   * 
+   * @param model - The model to use for the AI provider. 
+   */
+  public setModel(model: string) {
+    this.config.model = model;
+  }
+  
+  /**
+   * Sets the temperature to use for the AI provider.
+   * 
+   * @param temperature - The temperature to use for the AI provider.
+   */
+  public setTemperature(temperature: number) {
+    this.config.temperature = temperature;
+  }
+  
+  /**
+   * Sets the maximum number of tokens to use for the AI provider.
+   * 
+   * @param maxTokens - The maximum number of tokens to use for the AI provider.
+   */
+  public setMaxTokens(maxTokens: number) {
+    this.config.maxTokens = maxTokens;
+  }
 }
