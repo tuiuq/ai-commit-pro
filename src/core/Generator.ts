@@ -14,4 +14,22 @@ export class Generator {
       model: env.OPENAI_MODEL,
     });
   }
+
+  public async generateCommitMessage(
+    systemPrompt: string,
+    userPrompt: string
+  ): Promise<string> {
+    const response = await this.client.sendMessage([
+      {
+        role: "system",
+        content: systemPrompt
+      },
+      {
+        role: "user",
+        content: userPrompt
+      }
+    ])
+    
+    return response.content || "";
+  }
 }
