@@ -37,7 +37,6 @@ export async function generateCommitMessage(
   try {
     logger.debug("发送 OpenAI API 请求", {
       model,
-      temperature: 0.7
     })
     const completion = await client.chat.completions.create({
       model,
@@ -51,7 +50,6 @@ export async function generateCommitMessage(
           content: userPrompt,
         }
       ],
-      temperature: 0.7
     })
 
     const message = completion.choices[0]?.message?.content ?? "";
