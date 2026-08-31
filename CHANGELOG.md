@@ -1,4 +1,10 @@
 # Changelog
+## [1.6.1](https://github.com/tuiuq/ai-commit-pro/compare/v1.6.0..v1.6.1) - 2026-08-31
+
+### 🐛 Bug Fixes
+
+- Remove temperature to resolve 400 invalid temperature api error - ([e1bc0e6](https://github.com/tuiuq/ai-commit-pro/commit/e1bc0e696c9f44fa9cf26a6ea8458f7d793c52e1))
+
 ## [1.6.0](https://github.com/tuiuq/ai-commit-pro/compare/v1.5.0..v1.6.0) - 2025-11-11
 
 ### ⛰️  Features
