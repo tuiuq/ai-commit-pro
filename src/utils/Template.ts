@@ -5,7 +5,7 @@ export class PromptTemplate<P extends object = object> {
   constructor(private prompt: string, private promptData: P) {
     this.processTemplate();
   }
-  
+
   private processTemplate(): void {
     this.prompt = this.prompt.replace(
       this.ifBlockRegex,
@@ -13,7 +13,7 @@ export class PromptTemplate<P extends object = object> {
         return this.promptData[condition] ? content : "";
       }
     )
-    
+
     this.prompt = this.prompt.replace(
       this.variableRegex,
       (_, key: keyof P) => {
@@ -25,7 +25,7 @@ export class PromptTemplate<P extends object = object> {
       }
     )
   }
-  
+
   public toString(): string {
     return this.prompt.trim();
   }

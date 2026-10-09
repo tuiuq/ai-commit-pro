@@ -14,7 +14,7 @@ export async function buildPrompts(data: PromptData) {
   const systemPrompt = await loadPrompt("system")
   const userTemplate = await loadPrompt("user")
   const userPrompt = new PromptTemplate(userTemplate, data).toString()
-  
+
   return {
     systemPrompt,
     userPrompt

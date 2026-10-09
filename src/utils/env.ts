@@ -5,6 +5,6 @@ export function parseEnv<T>(schema: ZodType<T>, raw: Record<string, string | und
   if (!parsed.success) {
     throw parsed.error
   }
-  
+
   return parsed.data
 }
