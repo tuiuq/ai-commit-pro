@@ -1,4 +1,10 @@
 # Changelog
+## [1.6.2](https://github.com/tuiuq/ai-commit-pro/compare/v1.6.1..v1.6.2) - 2026-10-10
+
+### 🐛 Bug Fixes
+
+- *(simpleGit)* 🐛 修复 git diff 命令中文件路径被误解析为选项的问题 - ([7deb39c](https://github.com/tuiuq/ai-commit-pro/commit/7deb39cc792838ff7668ed2bca1fcce383111a11))
+
 ## [1.6.1](https://github.com/tuiuq/ai-commit-pro/compare/v1.6.0..v1.6.1) - 2026-08-31
 
 ### 🐛 Bug Fixes
