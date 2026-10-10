@@ -10,7 +10,7 @@ export function getChangedFiles(): string[] {
 }
 
 export function getGitDiffWithFile(file: string): string {
-  return execSync(`git diff --cached "${resolve(getTopLevel(), file)}"`, { encoding: "utf-8" }).trim()
+  return execSync(`git diff --cached -- "${resolve(getTopLevel(), file)}"`, { encoding: "utf-8" }).trim()
 }
 
 export function getGitDiff(): string[] {
